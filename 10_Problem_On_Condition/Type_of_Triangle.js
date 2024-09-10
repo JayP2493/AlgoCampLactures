@@ -11,9 +11,9 @@ function type_of_Triangle (length1, length2, length3) {
         if (length1 === length2 && length2 === length3) {
             return "Equilateral Triangle";
         } else if ((length1 === length2) || (length1 === length3) || (length2 === length3)) {
-            return "Isosceles Triangle";
-        } else {
             return "Scalene Triangle";
+        } else {
+            return "Isosceles Triangle";
         }
     } else {
         return "Triangle formation is not possible";
