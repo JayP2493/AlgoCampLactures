@@ -13,3 +13,5 @@ let obj = {
     }
 }
 obj.fn();
+
+sd
