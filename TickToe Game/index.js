@@ -1,4 +1,4 @@
-const readline = require('readline');
+const prompt = require("prompt-sync") ();
 
 class Player {
     name;
@@ -13,7 +13,7 @@ class Player {
     }
 
     printScore() {
-        console.log(`${name} won: ${this.totalScore} games`);
+        console.log(`${this.name} won: ${this.totalScore} games`);
     }
 
     addName(name) {
@@ -50,6 +50,11 @@ class Tic_board {
                     continuousBox++;
                 }
             }
+            if (continuousBox === 3) {
+                break;
+            } else {
+                continuousBox = 0;
+            }
         }
 
         if (continuousBox === 3) {
@@ -63,6 +68,11 @@ class Tic_board {
                 if (this.board[j][i] === addSign) {
                     continuousBox++;
                 }
+            }
+            if (continuousBox === 3) {
+                break;
+            } else {
+                continuousBox = 0;
             }
         }
 
@@ -102,7 +112,7 @@ class Tic_board {
     }
 
     checkMovePossible (row,col) {
-        if ((typeof (row) !== "number" && typeof (col) !== "number") && (row <= 2 && col <= 2)) {
+        if ((typeof (row) !== "number" && typeof (col) !== "number") && (row > 2 && col > 2)) {
             console.log("Entered invalid number or not a number");
         } else {
             if(this.board[row][col] === "_") {
@@ -134,19 +144,8 @@ class Game {
 
     newGame () {
         console.log("Creating game...");
-        process.stdout.write('Enter Player 1 name');
-
-        process.stdin.on('data', function(data) {
-            this.player_A.addName(data.toString().trim());
-            process.exit(); // End the program after receiving input
-        });
-
-        process.stdout.write('Enter Player 2 name');
-
-        process.stdin.on('data', function(data) {
-            this.player_B.addName(data.toString().trim());
-            process.exit(); // End the program after receiving input
-        });
+        this.player_A.addName(prompt("Enter your Player 1 name: "));
+        this.player_B.addName(prompt("Enter your Player 2 name: "));
         this.board.printBoard();
         this.player1 = this.player_A;
         this.player2 = this.player_B;
@@ -175,6 +174,7 @@ class Game {
     resetBoard() {
         this.board.resetBoard();
         this.moveCounter = 0;
+        this.board.printBoard();
     }
 
     playerSwap(player) {
@@ -204,22 +204,8 @@ class Game {
 
             console.log(`${player.name}, Make your move`);
 
-
-            let getRow = 0; // need function to add from console
-            process.stdout.write('Add Row Number: ');
-
-            process.stdin.on('data', function(data) {
-                getRow = parseInt(data.toString().trim(), 10);
-                process.exit(); // End the program after receiving input
-            });
-
-            let getCol = 0; // need function to add from console
-            process.stdout.write('Add Row Number: ');
-
-            process.stdin.on('data', function(data) {
-                getCol = parseInt(data.toString().trim(), 10);
-                process.exit(); // End the program after receiving input
-            });
+            let getRow = parseInt(prompt("Add Row Number: ")); // need function to add from console
+            let getCol = parseInt(prompt("Add Col Number: ")); // need function to add from console
 
             if (!this.board.checkMovePossible(getRow,getCol)) {
                 this.moveCounter--;
@@ -241,19 +227,13 @@ class Game {
             }
 
             if (gameDone) {
-                console.log(`${this.player_A.name} your score is:`)
                 this.player_A.printScore();
-                console.log(`${this.player_B.name} your score is:`)
                 this.player_B.printScore();
 
                 console.log("Want to continue");
-
-                let cont = "Y" // need function to add from console
-                process.stdout.write('What is your name? ');
-
-                process.stdin.on('data', function(data) {
-                    cont = data.toString().trim()// End the program after receiving input
-                });
+                let cont =  prompt("Want to continue? Y/N:       ")// need function to add from console
+                cont.toUpperCase();
+                console.log(cont)
 
                 if (cont === "Y") {
                     this.resetBoard();

@@ -1,6 +1,3 @@
-process.stdout.write('What is your name? ');
-
-process.stdin.on('data', function(data) {
-    console.log(`Hello, ${data.toString().trim()}!`);
-    process.exit(); // End the program after receiving input
-});
+const prompt = require("prompt-sync") ();
+let c = prompt("Enter your name: ")
+console.log(c)
