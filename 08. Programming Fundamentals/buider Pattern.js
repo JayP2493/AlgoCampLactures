@@ -37,14 +37,14 @@ class Product {
             }
         }
 
-        return CreateProduct;
+        return new CreateProduct;
     }
 
     displayProduct() {
         console.log("Display Product",this.#name, this.#price, this.#description);
     }
 }
-
+let a =0;
 
 let p = new Product.Create()
     .setPrice(5000)
