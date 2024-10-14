@@ -29,7 +29,7 @@ class Product {
     }
 
     static get Builder() {
-        class productBuilder {
+        class Builder {
             constructor() {
                 this.name = undefined;
                 this.price = undefined;
