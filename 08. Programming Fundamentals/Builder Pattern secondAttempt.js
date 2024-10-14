@@ -56,10 +56,10 @@ class Product {
             }
         }
 
-        return new productBuilder();
+        return Builder;
     }
 }
 
-let x = new Product.Builder().setName("S24 Ultra").setPrice(56260).setDescription("It is very good product with very good camera and display and AI")
+let x = new Product.Builder().setName("S24 Ultra").setPrice(56260).setDescription("It is very good product with very good camera and display and AI").build();
 
 x.printName();
