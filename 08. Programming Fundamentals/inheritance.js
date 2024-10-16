@@ -1,20 +1,23 @@
-let event = {
-    event: "xyz",
+class Event {
 
-    book: function () {
-        console.log('Book Ticket of ', this.event);
+    constructor(EventDate,SeatNo,typeofEvent,eventDiscription) {
+        this.EventDate = EventDate;
+        this.SeatNo = SeatNo;
+        this.typeofEvent = typeofEvent;
+        this.eventDiscription = eventDiscription;
+    }
+
+    bookEvent() {
+        console.log(this.typeofEvent,this.eventDiscription,"booked on date of ", this.EventDate, " with seat no: ", this.SeatNo);
     }
 }
 
-let movie = {
-    event: "movie"
+class Movie extends Event {
+    constructor(EventDate,SeatNo,movieName) {
+        super(EventDate, SeatNo,"Movie",movieName);
+    }
 }
-let comedy = {
-    event: "comedy"
-}
-let concert = {
-    event: "concert"
-}
-event.book.call(movie);
-event.book.call(comedy);
-event.book.call(concert);
+
+let deadpool = new Movie("17/10/24",34,"Deadpool");
+
+deadpool.bookEvent();
