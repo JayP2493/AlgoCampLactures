@@ -5,6 +5,10 @@ function Event(EventDate,SeatNo,typeofEvent,eventDiscription) {
     this.eventDiscription = eventDiscription;
 }
 
+function Event2(abc) {
+    this.abc = abc;
+}
+
 Event.prototype.bookEvent = function() {
     console.log(this.typeofEvent,this.eventDiscription,"booked on date of ", this.EventDate, " with seat no: ", this.SeatNo)
 }
