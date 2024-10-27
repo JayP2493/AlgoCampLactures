@@ -18,7 +18,7 @@ let p2 = new Promise((resolve) => {
 p1.then(function() {console.log("P1 CB Done")});
 p2.then(function() {console.log("P2 CB Done")});
 
-for (let i = 0; i < 10000000; i++) {}
-for (let i = 0; i < 10000000; i++) {}
+for (let i = 0; i < 100000000; i++) {}
+for (let i = 0; i < 100000000; i++) {}
 
 console.log("End");
