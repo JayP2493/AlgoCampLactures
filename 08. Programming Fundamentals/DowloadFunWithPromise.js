@@ -34,6 +34,6 @@ function seq (fileName, filePath) {
         .then(() => {return uploadFiles(fileName, filePath)});
 }
 
-// seq("abc.text","xyz.com")
-let a = uploadFiles("xyz.text","abc.com")
-console.log(a);
+seq("abc.text","xyz.com")
+// let a = uploadFiles("xyz.text","abc.com")
+// console.log(a);
