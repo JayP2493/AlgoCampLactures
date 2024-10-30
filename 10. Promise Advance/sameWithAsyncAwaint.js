@@ -47,15 +47,18 @@ function checkOut() {
 }
 
 async function gen () {
-    console.log("Step1....")
-    let step1 = await addToCart();
-    console.log("Step2....")
-    let step2 = await makePayment();
-    console.log("Step3....")
-    let step3 = await checkOut();
-    console.log("Done")
-
-    return;
+    try {
+        console.log("Step1....")
+        let step1 = await addToCart();
+        console.log("Step2....")
+        let step2 = await makePayment();
+        console.log("Step3....")
+        let step3 = await checkOut();
+        console.log("Done")
+        return "Done";
+    } catch (e) {
+        console.error("Something is wrong", e);
+    }
 }
 
 gen();
